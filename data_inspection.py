@@ -59,3 +59,10 @@ if __name__ == "__main__":
         text = train_ds2[i]["context"]
         print_prop(text)
         
+from datasets import load_dataset
+import shutil
+import os
+
+ds = load_dataset("muyu0515/nl2prop")
+
+print(ds["train"][0])
