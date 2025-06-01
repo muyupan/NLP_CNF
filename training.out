@@ -1,0 +1,63 @@
+The token has not been saved to the git credentials helper. Pass `add_to_git_credential=True` in this function directly or `--add-to-git-credential` if using via `huggingface-cli` if you want to set the git credential as well.
+Token is valid (permission: fineGrained).
+The token `muyu0515` has been saved to /storage/home/mfp5696/.cache/huggingface/stored_tokens
+Your token has been saved to /storage/home/mfp5696/.cache/huggingface/token
+Login successful.
+Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.
+starting job at:
+Sun Jun  1 00:55:16 EDT 2025
+/storage/group/vxk1/default/muyu_folder/conda/env/nlp_cnf/lib/python3.10/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Unsloth 2025.5.10 patched 32 layers with 32 QKV layers, 32 O layers and 32 MLP layers.
+Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+==((====))==  Unsloth - 2x faster free finetuning | Num GPUs used = 1
+   \\   /|    Num examples = 4,880 | Num Epochs = 1 | Total steps = 60
+O^O/ \_/ \    Batch size per device = 2 | Gradient accumulation steps = 4
+\        /    Data Parallel GPUs = 1 | Total batch size (2 x 4 x 1) = 8
+ "-____-"     Trainable parameters = 41,943,040/8,000,000,000 (0.52% trained)
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth Zoo will now patch everything to make training faster!
+==((====))==  Unsloth 2025.5.10: Fast Llama patching. Transformers: 4.52.4.
+   \\   /|    NVIDIA A100-PCIE-40GB. Num GPUs = 1. Max memory: 39.495 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.6.0+cu124. CUDA: 8.0. CUDA Toolkit: 12.4. Triton: 3.2.0
+\        /    Bfloat16 = TRUE. FA [Xformers = None. FA2 = False]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+  0%|          | 0/60 [00:00<?, ?it/s]  2%|▏         | 1/60 [00:04<04:07,  4.19s/it]  3%|▎         | 2/60 [00:05<02:28,  2.56s/it]  5%|▌         | 3/60 [00:07<01:55,  2.03s/it]  7%|▋         | 4/60 [00:08<01:38,  1.76s/it]  8%|▊         | 5/60 [00:09<01:30,  1.64s/it] 10%|█         | 6/60 [00:11<01:23,  1.55s/it] 12%|█▏        | 7/60 [00:12<01:19,  1.49s/it] 13%|█▎        | 8/60 [00:13<01:15,  1.45s/it] 15%|█▌        | 9/60 [00:15<01:12,  1.42s/it] 17%|█▋        | 10/60 [00:16<01:10,  1.42s/it] 18%|█▊        | 11/60 [00:18<01:08,  1.41s/it] 20%|██        | 12/60 [00:19<01:06,  1.39s/it] 22%|██▏       | 13/60 [00:20<01:04,  1.38s/it] 23%|██▎       | 14/60 [00:22<01:02,  1.36s/it] 25%|██▌       | 15/60 [00:23<01:00,  1.36s/it] 27%|██▋       | 16/60 [00:24<00:59,  1.36s/it] 28%|██▊       | 17/60 [00:26<00:57,  1.35s/it] 30%|███       | 18/60 [00:27<00:56,  1.34s/it] 32%|███▏      | 19/60 [00:28<00:54,  1.34s/it] 33%|███▎      | 20/60 [00:30<00:53,  1.33s/it] 35%|███▌      | 21/60 [00:31<00:52,  1.34s/it] 37%|███▋      | 22/60 [00:32<00:50,  1.34s/it] 38%|███▊      | 23/60 [00:34<00:50,  1.36s/it] 40%|████      | 24/60 [00:35<00:48,  1.36s/it] 42%|████▏     | 25/60 [00:36<00:47,  1.36s/it] 43%|████▎     | 26/60 [00:38<00:45,  1.35s/it] 45%|████▌     | 27/60 [00:39<00:44,  1.36s/it] 47%|████▋     | 28/60 [00:40<00:43,  1.36s/it] 48%|████▊     | 29/60 [00:42<00:42,  1.36s/it] 50%|█████     | 30/60 [00:43<00:40,  1.36s/it] 52%|█████▏    | 31/60 [00:45<00:40,  1.38s/it] 53%|█████▎    | 32/60 [00:46<00:38,  1.37s/it] 55%|█████▌    | 33/60 [00:47<00:36,  1.36s/it] 57%|█████▋    | 34/60 [00:49<00:35,  1.36s/it] 58%|█████▊    | 35/60 [00:50<00:33,  1.35s/it] 60%|██████    | 36/60 [00:51<00:32,  1.34s/it] 62%|██████▏   | 37/60 [00:53<00:30,  1.34s/it] 63%|██████▎   | 38/60 [00:54<00:29,  1.33s/it] 65%|██████▌   | 39/60 [00:55<00:27,  1.33s/it] 67%|██████▋   | 40/60 [00:57<00:26,  1.34s/it] 68%|██████▊   | 41/60 [00:58<00:25,  1.35s/it] 70%|███████   | 42/60 [00:59<00:24,  1.34s/it] 72%|███████▏  | 43/60 [01:01<00:22,  1.33s/it] 73%|███████▎  | 44/60 [01:02<00:21,  1.34s/it] 75%|███████▌  | 45/60 [01:03<00:20,  1.34s/it] 77%|███████▋  | 46/60 [01:05<00:18,  1.34s/it] 78%|███████▊  | 47/60 [01:06<00:17,  1.33s/it] 80%|████████  | 48/60 [01:07<00:16,  1.34s/it] 82%|████████▏ | 49/60 [01:09<00:14,  1.33s/it] 83%|████████▎ | 50/60 [01:10<00:13,  1.33s/it] 85%|████████▌ | 51/60 [01:11<00:12,  1.35s/it] 87%|████████▋ | 52/60 [01:13<00:10,  1.34s/it] 88%|████████▊ | 53/60 [01:14<00:09,  1.34s/it] 90%|█████████ | 54/60 [01:15<00:08,  1.35s/it] 92%|█████████▏| 55/60 [01:17<00:06,  1.36s/it] 93%|█████████▎| 56/60 [01:18<00:05,  1.35s/it] 95%|█████████▌| 57/60 [01:19<00:04,  1.35s/it] 97%|█████████▋| 58/60 [01:21<00:02,  1.34s/it] 98%|█████████▊| 59/60 [01:22<00:01,  1.34s/it]100%|██████████| 60/60 [01:23<00:00,  1.34s/it]                                               100%|██████████| 60/60 [01:25<00:00,  1.34s/it]100%|██████████| 60/60 [01:25<00:00,  1.42s/it]
+Unsloth: Will smartly offload gradients to save VRAM!
+{'train_runtime': 85.2052, 'train_samples_per_second': 5.633, 'train_steps_per_second': 0.704, 'train_loss': 0.3152770678202311, 'epoch': 0.1}
+Unsloth: Merging 4bit and LoRA weights to 16bit...
+Unsloth: Will use up to 263.07 out of 376.4 RAM for saving.
+Unsloth: Saving model... This might take 5 minutes ...
+  0%|          | 0/32 [00:00<?, ?it/s] 12%|█▎        | 4/32 [00:00<00:00, 33.50it/s] 31%|███▏      | 10/32 [00:00<00:00, 43.53it/s] 53%|█████▎    | 17/32 [00:00<00:00, 52.45it/s] 78%|███████▊  | 25/32 [00:00<00:00, 60.58it/s]100%|██████████| 32/32 [00:00<00:00, 58.01it/s]
+Unsloth: ##### The current model auto adds a BOS token.
+Unsloth: ##### Your chat template has a BOS token. We shall remove it temporarily.
+Unsloth: Saving tokenizer... Done.
+Done.
+Unsloth: Merging 4bit and LoRA weights to 16bit...
+Unsloth: Will use up to 296.65 out of 376.4 RAM for saving.
+Unsloth: Saving model... This might take 5 minutes ...
+  0%|          | 0/32 [00:00<?, ?it/s] 19%|█▉        | 6/32 [00:00<00:00, 50.15it/s] 38%|███▊      | 12/32 [00:00<00:00, 52.93it/s] 62%|██████▎   | 20/32 [00:00<00:00, 62.23it/s] 88%|████████▊ | 28/32 [00:00<00:00, 66.73it/s]100%|██████████| 32/32 [00:00<00:00, 64.02it/s]
+Unsloth: Converting llama model. Can use fast conversion = False.
+Unsloth: Saving tokenizer... Done.
+Done.
+==((====))==  Unsloth: Conversion from QLoRA to GGUF information
+   \\   /|    [0] Installing llama.cpp might take 3 minutes.
+O^O/ \_/ \    [1] Converting HF to GGUF 16bits might take 3 minutes.
+\        /    [2] Converting GGUF 16bits to ['q4_k_m'] might take 10 minutes each.
+ "-____-"     In total, you will have to wait at least 16 minutes.
+
+Unsloth: Installing llama.cpp. This might take 3 minutes...
+Traceback (most recent call last):
+  File "/storage/group/vxk1/default/muyu_folder/NLP_CNF/deepseek_prop.py", line 84, in <module>
+    model.save_pretrained_gguf(
+  File "/storage/group/vxk1/default/muyu_folder/conda/env/nlp_cnf/lib/python3.10/site-packages/unsloth/save.py", line 1865, in unsloth_save_pretrained_gguf
+    all_file_locations, want_full_precision = save_to_gguf(
+  File "/storage/group/vxk1/default/muyu_folder/conda/env/nlp_cnf/lib/python3.10/site-packages/unsloth/save.py", line 1093, in save_to_gguf
+    raise RuntimeError(
+RuntimeError: Unsloth: The file 'llama.cpp/llama-quantize' or `llama.cpp/quantize` does not exist.
+We've also double checked the building directory under 'llama.cpp/build/bin/'.
+But we expect this file to exist! Check if the file exists under llama.cpp and investigate the building process of llama.cpp (make/cmake)!
+srun: error: p-gc-3001: task 0: Exited with exit code 1
+job finished at:
+Sun Jun  1 00:58:18 EDT 2025
