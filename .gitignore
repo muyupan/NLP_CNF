@@ -1,0 +1,11 @@
+# IGnore slurm files
+*.slurm
+slurm-*.out
+
+__pycache__/
+*.pyc
+
+*.log
+unsloth_compiled_cache/
+
+.DS_Store
