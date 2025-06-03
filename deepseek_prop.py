@@ -2,12 +2,15 @@ from datasets import load_dataset
 from unsloth import FastLanguageModel
 from unsloth.chat_templates import get_chat_template
 import torch
-from transformers import TrainingArguments
+from transformers import TrainingArguments, EarlyStoppingCallback
 from trl import SFTTrainer
 import nltk
 from nltk.tokenize import sent_tokenize
 nltk.download('punkt')
 nltk.download('punkt_tab')
+import time
+import json
+from datetime import datetime
 
 #1. load a model
 model, tokenizer = FastLanguageModel.from_pretrained(
@@ -35,7 +38,7 @@ def formatting_prompts_func(examples):
         "\"If John sings, then Mary is happy.\" -> Implies(P, Q)\n\n"
         "Represent each unique variable or statement using single alphabetic character, like A, B, C, D etc. Do not use composition of words to represent variable like Implies(ExecutiveBoardAppointment, UndergraduateDegree)!\n"
         "Do not use double alphabetic characters for one variable, only use number with alphabetic characters if all single alphabetic characters are used.\n"
-        "Do not use symbols like , v, or ->. Do not use triple backticks."
+        "Do not use symbols like ^, v, or ->. Do not use triple backticks."
         "Output only the function call syntax, one line per sentence. Do not explain sentence represented by what variables like 'Where:', 'P = In Country X last election, the Reform Party beat its main opponent, the Conservative Party. Only output propositional logic, do not do any explaination!\n\n"
         "Here are the sentences:\n"
     )
@@ -62,6 +65,7 @@ def formatting_prompts_func(examples):
 dataset = load_dataset("muyu0515/nl2prop")
 dataset["train"] = dataset["train"].map(formatting_prompts_func, batched=True)
 dataset["test"] = dataset["test"].map(formatting_prompts_func, batched=True)
+dataset["validation"] = dataset["validation"].map(formatting_prompts_func, batched=True)
 #4. LoRA setting
 model = FastLanguageModel.get_peft_model(
     model,
@@ -79,12 +83,21 @@ model = FastLanguageModel.get_peft_model(
 
 #5. Set Training Params
 training_args = TrainingArguments(
-    per_device_train_batch_size=2,
-    gradient_accumulation_steps=4,
-    max_steps = 60,
-    num_train_epochs=3,
+    per_device_train_batch_size=4,
+    gradient_accumulation_steps=2,
+    num_train_epochs=4,
     learning_rate=2e-4,
+    warmup_steps=100,
+
+    # Validation settings
+    eval_strategy="epoch",
+    save_strategy="epoch",
+    load_best_model_at_end=True,  
+    metric_for_best_model="eval_loss",
+
     output_dir="./nl2prop_deepseek8b",
+    logging_steps=20,
+    report_to="none",  # Disable wandb if not using
 )
 
 #6. Create Trainer and Train
@@ -92,11 +105,19 @@ trainer = SFTTrainer(
     model=model,
     tokenizer=tokenizer,
     train_dataset=dataset["train"],
+    eval_dataset=dataset["validation"],
     dataset_text_field="text",
     args=training_args,
 )
+
+start_time = time.time()
+start_datetime = datetime.now()
+
 trainer.train()
 
+end_time = time.time()
+training_hours = (end_time - start_time) / 3600
+print(training_hours)
 #7. Save and exportt
 model.save_pretrained("nl2prop_deepseek8b")
 tokenizer.save_pretrained("nl2prop_deepseek8b")
@@ -128,7 +149,7 @@ def generate_logic(text):
         "\"If John sings, then Mary is happy.\" -> Implies(P, Q)\n\n"
         "Represent each unique variable or statement using single alphabetic character, like A, B, C, D etc. Do not use compostion of words to represent variable like Implies(ExecutiveBoardAppointment, UndergraduateDegree)!\n"
         "Do not use double alphabetic characters for one variable, only use number with alphabetic characters if all single alphabetic characters are used.\n"
-        "Do not use symbols like ∧, ∨, or ->. Do not use triple backticks."
+        "Do not use symbols like ^, v, or ->. Do not use triple backticks."
         "Output only the function call syntax, one line per sentence. Do not explain sentence represented by what variables like 'Where:', 'P = In Country X last election, the Reform Party beat its main opponent, the Conservative Party. Only output propositional logic, do not do any explaination!\n\n"
         "Here are the sentences:\n"
     )
